@@ -61,25 +61,35 @@ public class Filter
       }
 
       //get properties file and check if it exists, if they do, they overwrite the env/curr vars
-      try{
+      try {
          Properties prop = new Properties();
-         prop.load(new FileInputStream("filter.properties"));
-         //create a filter-save.properties file if it doesnt exist, copy filter.properties to it
-         Files.copy(Paths.get("filter.properties"), Paths.get("filter-save.properties"), StandardCopyOption.REPLACE_EXISTING);
-                 
-         if(prop.getProperty("precision") != null) {
+         File propertiesFile = new File("filter.properties");
+         prop.load(new FileInputStream(propertiesFile));
+
+         // create a filter-save.properties file if it doesn't exist, copy filter.properties to it
+         File saveFile = new File("filter-save.properties");
+         Files.copy(propertiesFile.toPath(), saveFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+         if (prop.getProperty("precision") != null) {
             precision = Integer.parseInt(prop.getProperty("precision"));
          }
-         if(prop.getProperty("columns") != null) {
+         if (prop.getProperty("columns") != null) {
             columns = Integer.parseInt(prop.getProperty("columns"));
          }
-         if(prop.getProperty("groups") != null) {
+         if (prop.getProperty("groups") != null) {
             groups = Integer.parseInt(prop.getProperty("groups"));
          }
       }
-      catch (IOException e) {
-         System.err.println("Error: Properties file not found wtf you mean");
+      catch (FileNotFoundException e) {
+         System.err.println("Error: Properties file not found");
       }
+      catch (IOException e) {
+         System.err.println("Error: Properties file not found");
+      }
+      catch (NumberFormatException e) {
+         System.err.println("Error: Properties file does not contain an integer");
+      }
+      
 
       //get command line args and check if they exist, if they do, they overwrite the all/curr vars
       // after commands, the arguments are as follows: int columns, int precision, int groups
@@ -143,6 +153,7 @@ public class Filter
             if(count % groups == 0)
             {
                System.out.print("\n\n");
+               count = 0;
             }
             if (count % groups != 0 && count % columns != 0)
             {
