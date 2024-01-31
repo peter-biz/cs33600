@@ -8,13 +8,16 @@ import java.util.Properties;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.io.FileNotFoundException;
 
 /**
    Three parameters:
       1. How many input number get group together (ie get pass 5, num would be 12345 67890)
       2. The number of output columns, default 3, so 3 columns per line, then new line
-      3. Percision of decimal point (ie pass 3, num = 1.123)
+      3. precision of decimal point (ie pass 3, num = 1.123)
 
    These parameters have defaults(order of precedence):
       1. Command line
@@ -33,22 +36,22 @@ public class Filter
 {
    public static void main(String[] args)
    {
-      //columns, percision, groups vars (deafult, overwritten if env var or cmd line or properties)
+      //columns, precision, groups vars (deafult, overwritten if env var or cmd line or properties)
       int columns = 3;
-      int percision = 13;
+      int precision = 13;
       int groups = 0;
 
       //get env vars and check if they exist, if they do, they overwrite default vars
       try {
          String columnsEnv = System.getenv("CS336_COLUMNS");
-         String percisionEnv = System.getenv("CS336_PRECISION");
+         String precisionEnv = System.getenv("CS336_PRECISION");
          String groupsEnv = System.getenv("CS336_GROUPS");
 
          if (columnsEnv != null) {
             columns = Integer.parseInt(columnsEnv);
          }
-         if (percisionEnv != null) {
-            percision = Integer.parseInt(percisionEnv);
+         if (precisionEnv != null) {
+            precision = Integer.parseInt(precisionEnv);
          }
          if (groupsEnv != null) {
             groups = Integer.parseInt(groupsEnv);
@@ -61,9 +64,11 @@ public class Filter
       try{
          Properties prop = new Properties();
          prop.load(new FileInputStream("filter.properties"));
-         
-         if(prop.getProperty("percision") != null) {
-            percision = Integer.parseInt(prop.getProperty("percision"));
+         //create a filter-save.properties file if it doesnt exist, copy filter.properties to it
+         Files.copy(Paths.get("filter.properties"), Paths.get("filter-save.properties"), StandardCopyOption.REPLACE_EXISTING);
+                 
+         if(prop.getProperty("precision") != null) {
+            precision = Integer.parseInt(prop.getProperty("precision"));
          }
          if(prop.getProperty("columns") != null) {
             columns = Integer.parseInt(prop.getProperty("columns"));
@@ -73,23 +78,83 @@ public class Filter
          }
       }
       catch (IOException e) {
-         System.err.println("Error: Properties file not found");
+         System.err.println("Error: Properties file not found wtf you mean");
       }
 
       //get command line args and check if they exist, if they do, they overwrite the all/curr vars
-      // after commands, the arguments are as follows: int columns, int percision, int groups
-      if (args.length > 0) { //TODO: ill set this up later :)
-         System.out.println("args");
+      // after commands, the arguments are as follows: int columns, int precision, int groups
+      //Does not have to be all 3 arguments, can be 1, 2, or 3 and use current vars for the rest
+      if (args.length > 0) {
+         try {
+            if (args.length == 1) {
+               columns = Integer.parseInt(args[0]);
+            }
+            if (args.length == 2) {
+               columns = Integer.parseInt(args[0]);
+               precision = Integer.parseInt(args[1]);
+            }
+            if (args.length == 3) {
+               columns = Integer.parseInt(args[0]);
+               precision = Integer.parseInt(args[1]);
+               groups = Integer.parseInt(args[2]);
+            }
+         } catch (NumberFormatException e) {
+            System.err.println("Error: Command line argument not an integer");
+         }
       }
 
       //get input from stdin
       Scanner in = new Scanner(System.in);
+      int count = 0;
 
       while(in.hasNextDouble()) {
          double input = in.nextDouble();
+         //Columns determine amount of columns per row(2 spaces between columns), ie(col=3:  1  2  3\n), 
+         //precision is decimal pt(ie precision=3: 1.123), 
+         //groups is how many numbers per group(ie groups=4: 1 2 \n 1 2 \n\n)
+         //ALL output is right justified
 
+         //if groups is 0, then no groups, just print out in the colums with precision (groups is only 0 if cmd line arg is 0)
+         if (groups == 0) {
+            // If groups is 0, print each number in a column with specified precision
+            System.out.printf("%" + columns + "." + precision + "f", input);
+            count++;
+
+            if(count % columns == 0)
+            {   
+               System.out.print("\n");
+            }
+            if (count % columns != 0)
+            {
+               System.out.print("  ");
+            }
+        } else {
+            // If groups is greater than 0, print numbers in groups
+            System.out.printf("%" + columns + "." + precision + "f", input);
+            count++;
+
+            //check if we have reached the desired amount of columns
+            if(count % columns == 0)
+            {   
+               System.out.print("\n");
+            }
+
+            //check if we have reached the desired amount of groups
+            if(count % groups == 0)
+            {
+               System.out.print("\n\n");
+            }
+            if (count % groups != 0 && count % columns != 0)
+            {
+               System.out.print("  ");
+            }
+        }
          
+
       }
-         
+
+       
+      
+      in.close();
    }
 }
