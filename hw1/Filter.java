@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.io.FileNotFoundException;
 
@@ -24,8 +23,7 @@ import java.io.FileNotFoundException;
       2. In the environment variles, CS336_COLUMNS, CS336_PRECISION, CS336_GROUPS
       3. in the filter.properties file
       4. deafult values
-
-   should use the getenv() method to see if there are environment variables named CS336_COLUMNS or CS336_PRECISION or CS336_GROUPS.
+      
    If any of these environment variables exists, then its string value should be converted to an integer value by using the parseInt() method.
    
    Input numbers should be "right justified" in each output column 
@@ -41,26 +39,7 @@ public class Filter
       int precision = 13;
       int groups = 0;
 
-      //get env vars and check if they exist, if they do, they overwrite default vars
-      try {
-         String columnsEnv = System.getenv("CS336_COLUMNS");
-         String precisionEnv = System.getenv("CS336_PRECISION");
-         String groupsEnv = System.getenv("CS336_GROUPS");
-
-         if (columnsEnv != null) {
-            columns = Integer.parseInt(columnsEnv);
-         }
-         if (precisionEnv != null) {
-            precision = Integer.parseInt(precisionEnv);
-         }
-         if (groupsEnv != null) {
-            groups = Integer.parseInt(groupsEnv);
-         }
-      } catch (NumberFormatException e) {
-         System.err.println("Error: Environment variable not an integer");
-      }
-
-      //get properties file and check if it exists, if they do, they overwrite the env/curr vars
+      //get properties file and check if it exists, if they do, they overwrite the curr vars
       try {
          Properties prop = new Properties();
          File propertiesFile = new File("filter.properties");
@@ -89,6 +68,27 @@ public class Filter
       catch (NumberFormatException e) {
          System.err.println("Error: Properties file does not contain an integer");
       }
+      
+
+      //get env vars and check if they exist, if they do, they overwrite default vars
+      try {
+         String columnsEnv = System.getenv("CS336_COLUMNS");
+         String precisionEnv = System.getenv("CS336_PRECISION");
+         String groupsEnv = System.getenv("CS336_GROUPS");
+
+         if (columnsEnv != null) {
+            columns = Integer.parseInt(columnsEnv);
+         }
+         if (precisionEnv != null) {
+            precision = Integer.parseInt(precisionEnv);
+         }
+         if (groupsEnv != null) {
+            groups = Integer.parseInt(groupsEnv);
+         }
+      } catch (NumberFormatException e) {
+         System.err.println("Error: Environment variable not an integer");
+      }
+
       
 
       //get command line args and check if they exist, if they do, they overwrite the all/curr vars
@@ -160,12 +160,7 @@ public class Filter
                System.out.print("  ");
             }
         }
-         
-
       }
-
-       
-      
       in.close();
    }
 }
