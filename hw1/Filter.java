@@ -65,9 +65,6 @@ public class Filter
       catch (IOException e) {
          System.err.println("Error: Properties file not found");
       }
-      catch (NumberFormatException e) {
-         System.err.println("Error: Properties file does not contain an integer");
-      }
       
 
       //get env vars and check if they exist, if they do, they overwrite default vars
