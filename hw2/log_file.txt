@@ -1,0 +1,424 @@
+00110000
+Sending int = 1908182373 (0x71bc8d65)
+8d bc 71 65
+Sending int = -1114011880 (0xbd998718)
+87 99 bd 18
+Sending int = 782427446 (0x2ea2e536)
+e5 a2 2e 36
+Sending int = 1490769047 (0x58db5497)
+54 db 58 97
+Sending double = -813191095.544294200000 (0xc1c83c27dbc5ab6f)
+6f  ab  c5  db  27  3c  c8  c1  
+Sending double = -1826086871.733993500000 (0xc1db35f7f5eef9c0)
+c0  f9  ee  f5  f7  35  db  c1  
+Sending int = -1272979315 (0xb41fe08d)
+e0 1f b4 8d
+
+00010100
+Sending int = -61665091 (0xfc5310bd)
+10 53 fc bd
+Sending int = 448342691 (0x1ab92aa3)
+2a b9 1a a3
+Sending double = -157702642.450039740000 (0xc1a2ccb3e4e66b9c)
+9c  6b  e6  e4  b3  cc  a2  c1  
+Sending int = 143064042 (0x0886fbea)
+fb 86 08 ea
+Sending double = -93638662.753241910000 (0xc19653401b0351d9)
+d9  51  03  1b  40  53  96  c1  
+Sending int = -778385404 (0xd19ac804)
+c8 9a d1 04
+Sending int = -2031054740 (0x86f0906c)
+90 f0 86 6c
+
+01110110
+Sending int = -1158707174 (0xbaef881a)
+88 ef ba 1a
+Sending double = -1513185403.560471300000 (0xc1d68c581ee3dec3)
+c3  de  e3  1e  58  8c  d6  c1  
+Sending double = 541048920.890269800000 (0x41c01fe02c71f45c)
+5c  f4  71  2c  e0  1f  c0  41  
+Sending int = -719435664 (0xd51e4870)
+48 1e d5 70
+Sending double = 1060235418.340988300000 (0x41cf98f44d2ba581)
+81  a5  2b  4d  f4  98  cf  41  
+Sending double = 15750876.855807086000 (0x416e0adb9b62c58b)
+8b  c5  62  9b  db  0a  6e  41  
+Sending double = -1609723605.383004700000 (0xc1d7fc9bb5588326)
+26  83  58  b5  9b  fc  d7  c1  
+
+00001000
+Sending int = 1239949458 (0x49e82092)
+20 e8 49 92
+Sending int = -166528658 (0xf612f96e)
+f9 12 f6 6e
+Sending int = 1230413350 (0x49569e26)
+9e 56 49 26
+Sending double = 1412279917.311785200000 (0x41d50b6b9b53f44a)
+4a  f4  53  9b  6b  0b  d5  41  
+Sending int = 1773288565 (0x69b23c75)
+3c b2 69 75
+Sending int = -1744793669 (0x98008fbb)
+8f 00 98 bb
+Sending int = -369140545 (0xe9ff5cbf)
+5c ff e9 bf
+
+01010000
+Sending int = 1521211093 (0x5aabd6d5)
+d6 ab 5a d5
+Sending int = 309999389 (0x127a371d)
+37 7a 12 1d
+Sending int = -92961796 (0xfa7583fc)
+83 75 fa fc
+Sending int = -1816476622 (0x93bac432)
+c4 ba 93 32
+Sending double = -1755508427.193843100000 (0xc1da28bbb2cc67ed)
+ed  67  cc  b2  bb  28  da  c1  
+Sending int = 1913595629 (0x720f26ed)
+26 0f 72 ed
+Sending double = 766343461.157528400000 (0x41c6d6bc929429e4)
+e4  29  94  92  bc  d6  c6  41  
+
+01101011
+Sending double = 1824730893.262538400000 (0x41db30cbc350cd6e)
+6e  cd  50  c3  cb  30  db  41  
+Sending double = -1933395142.620620700000 (0xc1dccf5131a7b840)
+40  b8  a7  31  51  cf  dc  c1  
+Sending int = 1706293749 (0x65b3f9f5)
+f9 b3 65 f5
+Sending double = 368008893.566663700000 (0x41b5ef5ebd9110df)
+df  10  91  bd  5e  ef  b5  41  
+Sending int = 394233136 (0x177f8530)
+85 7f 17 30
+Sending double = 1406584958.886007000000 (0x41d4f5b21fb8b457)
+57  b4  b8  1f  b2  f5  d4  41  
+Sending double = 756558940.509735200000 (0x41c68c162e413f01)
+01  3f  41  2e  16  8c  c6  41  
+
+00001111
+Sending double = 1231777909.653780500000 (0x41d25adc1d69d78a)
+8a  d7  69  1d  dc  5a  d2  41  
+Sending double = 2006096364.258433600000 (0x41dde4a67b108a2d)
+2d  8a  10  7b  a6  e4  dd  41  
+Sending double = 2131814473.787054300000 (0x41dfc43a12725f19)
+19  5f  72  12  3a  c4  df  41  
+Sending double = 1451431710.017532600000 (0x41d5a0c5c7811f41)
+41  1f  81  c7  c5  a0  d5  41  
+Sending int = 196902487 (0x0bbc7e57)
+7e bc 0b 57
+Sending int = 1133903950 (0x4396004e)
+00 96 43 4e
+Sending int = 214270409 (0x0cc581c9)
+81 c5 0c c9
+
+00011000
+Sending int = 854186178 (0x32e9d8c2)
+d8 e9 32 c2
+Sending int = 1825872746 (0x6cd49b6a)
+9b d4 6c 6a
+Sending int = -360126248 (0xea88e8d8)
+e8 88 ea d8
+Sending double = 673299149.094421500000 (0x41c410dd668c1601)
+01  16  8c  66  dd  10  c4  41  
+Sending double = -334762317.909736600000 (0xc1b3f4114de8e47f)
+7f  e4  e8  4d  11  f4  b3  c1  
+Sending int = 478397812 (0x1c83c574)
+c5 83 1c 74
+Sending int = -231914572 (0xf22d43b4)
+43 2d f2 b4
+
+11001011 (75 characters)
+skaKa[I=&xGuR.d\XG U-~~g+H6P~s##Nf-T)iQE!#vcv\*%@uD5r6N$dJLS?XZ|^R/7-g-ETYi
+
+01000110
+Sending int = 1788720877 (0x6a9db6ed)
+b6 9d 6a ed
+Sending double = -52368953.509557990000 (0xc188f8b1cc139324)
+24  93  13  cc  b1  f8  88  c1  
+Sending double = -346431823.954300600000 (0xc1b4a6214ff44d0b)
+0b  4d  f4  4f  21  a6  b4  c1  
+Sending int = -812719837 (0xcf8ee123)
+e1 8e cf 23
+Sending int = 632341038 (0x25b0c22e)
+c2 b0 25 2e
+Sending int = -1389659890 (0xad2b790e)
+79 2b ad 0e
+Sending double = -1042913727.425972600000 (0xc1cf14ccdfb68645)
+45  86  b6  df  cc  14  cf  c1  
+
+11011010 (90 characters)
+zeR`;2'4uM`Bd~,>>.L&BYKAnIEC^rGJ<zo0.hS@lm%t9==H0Zpt<>97lMa'>eReUW}%?\O%qAKpM#Wj6i?RExZE/|
+
+11001111 (79 characters)
+s%6'q%][&M]Q,aqIys2*O!i+T($wpoea:.7h}gZWgo`;X| pe`*B7dhP4#At@kPO_;>'D:x-?]twq.q
+
+00010110
+Sending int = -1283368795 (0xb38158a5)
+58 81 b3 a5
+Sending double = -1646996935.543368000000 (0xc1d88acb71e2c68b)
+8b  c6  e2  71  cb  8a  d8  c1  
+Sending double = 481854251.158705060000 (0x41bcb8832b28a0e5)
+e5  a0  28  2b  83  b8  bc  41  
+Sending int = -1940367641 (0x8c5856e7)
+56 58 8c e7
+Sending double = -1570581146.024618900000 (0xc1d7674aa681935b)
+5b  93  81  a6  4a  67  d7  c1  
+Sending int = -1658521086 (0x9d24fa02)
+fa 24 9d 02
+Sending int = 2109774006 (0x7dc098b6)
+98 c0 7d b6
+
+10111001 (57 characters)
+>LKWHO@uy:W(Q6u4\8G7:'A}"QL|`qJzuM(S,#RzbL5RBBQPPsrVi@'AS
+
+01000000
+Sending int = 102959289 (0x062308b9)
+08 23 06 b9
+Sending int = 1045988971 (0x3e58866b)
+86 58 3e 6b
+Sending int = -2121146997 (0x8191dd8b)
+dd 91 81 8b
+Sending int = 1588393405 (0x5eacf5bd)
+f5 ac 5e bd
+Sending int = -1259954975 (0xb4e69ce1)
+9c e6 b4 e1
+Sending int = 1656313840 (0x62b957f0)
+57 b9 62 f0
+Sending double = -76156845.239195620000 (0xc192283eb4f4efb2)
+b2  ef  f4  b4  3e  28  92  c1  
+
+01110100
+Sending int = -1009777951 (0xc3d002e1)
+02 d0 c3 e1
+Sending int = 855797921 (0x330270a1)
+70 02 33 a1
+Sending double = -132226326.769614950000 (0xc19f86745b1415f1)
+f1  15  14  5b  74  86  9f  c1  
+Sending int = -246431601 (0xf14fc08f)
+c0 4f f1 8f
+Sending double = -1919358718.269819500000 (0xc1dc99c5bf9144b9)
+b9  44  91  bf  c5  99  dc  c1  
+Sending double = 1575515285.798627100000 (0x41d77a1d25731cb5)
+b5  1c  73  25  1d  7a  d7  41  
+Sending double = 1677619366.244981500000 (0x41d8ff9c298fadc7)
+c7  ad  8f  29  9c  ff  d8  41  
+
+10011100 (28 characters)
+@@iE5uV%ALbR(A2^^p;MNp)u*I6'
+
+01011100
+Sending int = 549716580 (0x20c40264)
+02 c4 20 64
+Sending int = 1218190225 (0x489c1b91)
+1b 9c 48 91
+Sending double = 94317647.602759150000 (0x41967cb13e6939b2)
+b2  39  69  3e  b1  7c  96  41  
+Sending double = 597943583.966122700000 (0x41c1d1f28ffba9e9)
+e9  a9  fb  8f  f2  d1  c1  41  
+Sending double = 688546846.127480100000 (0x41c485320f105145)
+45  51  10  0f  32  85  c4  41  
+Sending int = 882361974 (0x3497c676)
+c6 97 34 76
+Sending double = -711274011.072843900000 (0xc1c532970d8952f3)
+f3  52  89  0d  97  32  c5  c1  
+
+10110011 (51 characters)
+y2g nAcAkam i?~^0(M{lgr@wwWHUqz7%fO4qtEdi^,_5Sz#SaA
+
+01000000
+Sending int = 1670911240 (0x63981508)
+15 98 63 08
+Sending int = -1190884118 (0xb9048cea)
+8c 04 b9 ea
+Sending int = -188435281 (0xf4c4b4af)
+b4 c4 f4 af
+Sending int = 1610124317 (0x5ff88c1d)
+8c f8 5f 1d
+Sending int = 1468887139 (0x578d7063)
+70 8d 57 63
+Sending int = -1597034817 (0xa0cf2ebf)
+2e cf a0 bf
+Sending double = 696678169.821902400000 (0x41c4c33b8ce93419)
+19  34  e9  8c  3b  c3  c4  41  
+
+01000101
+Sending double = -328349346.244997600000 (0xc1b39236a23eb82a)
+2a  b8  3e  a2  36  92  b3  c1  
+Sending int = 674406495 (0x2832a05f)
+a0 32 28 5f
+Sending double = 295527131.745381000000 (0x41b19d62dbbed14a)
+4a  d1  be  db  62  9d  b1  41  
+Sending int = -1192567502 (0xb8eadd32)
+dd ea b8 32
+Sending int = -237289623 (0xf1db3f69)
+3f db f1 69
+Sending int = -23161056 (0xfe9e9720)
+97 9e fe 20
+Sending double = 2135694477.521813000000 (0x41dfd30723616562)
+62  65  61  23  07  d3  df  41  
+
+00000111
+Sending double = -132268022.795612510000 (0xc19f88ffdb2eb50c)
+0c  b5  2e  db  ff  88  9f  c1  
+Sending double = 710288180.882227100000 (0x41c52b119a70ecd1)
+d1  ec  70  9a  11  2b  c5  41  
+Sending double = -351297556.126607200000 (0xc1b4f06014206954)
+54  69  20  14  60  f0  b4  c1  
+Sending int = -504037519 (0xe1f4ff71)
+ff f4 e1 71
+Sending int = 1379433045 (0x52387a55)
+7a 38 52 55
+Sending int = 1641293488 (0x61d426b0)
+26 d4 61 b0
+Sending int = -1686624155 (0x9b782865)
+28 78 9b 65
+
+10001000 (8 characters)
+t$ww"`Ul
+
+00111000
+Sending int = 21988772 (0x014f85a4)
+85 4f 01 a4
+Sending int = -2037187731 (0x8692fb6d)
+fb 92 86 6d
+Sending int = -1820156706 (0x93829cde)
+9c 82 93 de
+Sending double = 1615323802.420462600000 (0x41d811f8a69ae8dc)
+dc  e8  9a  a6  f8  11  d8  41  
+Sending double = -1748312063.920449700000 (0xc1da0d47fffae8a6)
+a6  e8  fa  ff  47  0d  da  c1  
+Sending double = -639925814.144345800000 (0xc1c3123f1b1279ec)
+ec  79  12  1b  3f  12  c3  c1  
+Sending int = -86460104 (0xfad8b938)
+b9 d8 fa 38
+
+10101100 (44 characters)
+M `?SJ,X.SfK.NJ?$fp_fPaB:)T(lIj?U #h>L4ceO,"
+
+11101001 (105 characters)
+TVN:@;EKi_VAZWTNuurI['_(f9;%-GV@NOu<`n1 h5xuca(F-0.(PgTcq7jVWPhu#pkI+3GeUVg\`DIsKOz{1wIxT/hL!N:,ifN^)r?1K
+
+11001000 (72 characters)
+Q2dj8;hu~CyK(sVOO}w{waf]O^N;rJLnyM29l]o@iRUBRoKM++<ngu v-uxflzsBh& 7cXT*
+
+10010110 (22 characters)
+?IVBCX+2mr7EKMe?AV^C5U
+
+01101010
+Sending int = -1844692249 (0x920c3ae7)
+3a 0c 92 e7
+Sending double = -1580404533.057268600000 (0xc1d78cc3cd43aa4a)
+4a  aa  43  cd  c3  8c  d7  c1  
+Sending int = 1150271988 (0x448fc1f4)
+c1 8f 44 f4
+Sending double = 1396784681.917687000000 (0x41d4d04f8a7abb62)
+62  bb  7a  8a  4f  d0  d4  41  
+Sending int = 1952121436 (0x745b025c)
+02 5b 74 5c
+Sending double = -1563585435.126625000000 (0xc1d74c9ae6c81aa0)
+a0  1a  c8  e6  9a  4c  d7  c1  
+Sending double = -802765311.540073800000 (0xc1c7ec9cffc52123)
+23  21  c5  ff  9c  ec  c7  c1  
+
+01110011
+Sending double = -1841208281.528171300000 (0xc1db6fa6f661cd8f)
+8f  cd  61  f6  a6  6f  db  c1  
+Sending double = 1655349475.897420600000 (0x41d8aaa838f96f57)
+57  6f  f9  38  a8  aa  d8  41  
+Sending int = 1343758658 (0x50182142)
+21 18 50 42
+Sending int = -674633687 (0xd7c9e829)
+e8 c9 d7 29
+Sending double = 1053310999.552900000000 (0x41cf64200bc6c56d)
+6d  c5  c6  0b  20  64  cf  41  
+Sending double = 983314653.344826300000 (0x41cd4e186eac2345)
+45  23  ac  6e  18  4e  cd  41  
+Sending double = -406327461.571855300000 (0xc1b83810a592651c)
+1c  65  92  a5  10  38  b8  c1  
+
+11010010 (82 characters)
+zVc7\1J'8(N&F#o]K*FZavo:"`^k"1:t/!I]c,goTu`e>nHn}C5R,rAWbQD#e.E73|W]dDvThR;EdXH2{k
+
+10001110 (14 characters)
+w8e@v$aX'5;Q3:
+
+01010010
+Sending int = 1899549465 (0x7138d319)
+d3 38 71 19
+Sending double = -1837046195.288781600000 (0xc1db5fc66cd27b66)
+66  7b  d2  6c  c6  5f  db  c1  
+Sending int = 1511812398 (0x5a1c6d2e)
+6d 1c 5a 2e
+Sending int = 1807243035 (0x6bb8571b)
+57 b8 6b 1b
+Sending double = -600629402.018028600000 (0xc1c1e6704d024ec3)
+c3  4e  02  4d  70  e6  c1  c1  
+Sending int = 2108407927 (0x7dabc077)
+c0 ab 7d 77
+Sending double = -473844827.302276130000 (0xc1bc3e4c5b4d61f8)
+f8  61  4d  5b  4c  3e  bc  c1  
+
+00011000
+Sending int = 1804612320 (0x6b9032e0)
+32 90 6b e0
+Sending int = -621051269 (0xdafb827b)
+82 fb da 7b
+Sending int = -571190156 (0xddf45474)
+54 f4 dd 74
+Sending double = 249645060.967348960000 (0x41adc29009ef485d)
+5d  48  ef  09  90  c2  ad  41  
+Sending double = 57739006.852140635000 (0x418b8837f6d12f1c)
+1c  2f  d1  f6  37  88  8b  41  
+Sending int = 56352856 (0x035be058)
+e0 5b 03 58
+Sending int = 1757380974 (0x68bf816e)
+81 bf 68 6e
+
+01011011
+Sending double = -1872445675.454828700000 (0xc1dbe6d03add1bea)
+ea  1b  dd  3a  d0  e6  db  c1  
+Sending double = 1455470950.119760300000 (0x41d5b02e5987aa27)
+27  aa  87  59  2e  b0  d5  41  
+Sending int = 99540685 (0x05eedecd)
+de ee 05 cd
+Sending double = -1705959106.530368000000 (0xc1d96bb7b0a1f18d)
+8d  f1  a1  b0  b7  6b  d9  c1  
+Sending double = -612538005.085653400000 (0xc1c2414b4a8af6b1)
+b1  f6  8a  4a  4b  41  c2  c1  
+Sending int = -674197887 (0xd7d08e81)
+8e d0 d7 81
+Sending double = -1613604984.764320400000 (0xc1d80b6a1e30eaa0)
+a0  ea  30  1e  6a  0b  d8  c1  
+
+01110010
+Sending int = 1075057354 (0x401412ca)
+12 14 40 ca
+Sending double = -801696296.614616300000 (0xc1c7e475144eabbf)
+bf  ab  4e  14  75  e4  c7  c1  
+Sending int = -483829841 (0xe32957af)
+57 29 e3 af
+Sending int = 1715263930 (0x663cd9ba)
+d9 3c 66 ba
+Sending double = 1153376289.287546200000 (0x41d12fc808526728)
+28  67  52  08  c8  2f  d1  41  
+Sending double = -1378727351.098381800000 (0xc1d48b6d6dc64be3)
+e3  4b  c6  6d  6d  8b  d4  c1  
+Sending double = -276649231.615627350000 (0xc1b07d550f9d99c1)
+c1  99  9d  0f  55  7d  b0  c1  
+
+01111110
+Sending int = -380238212 (0xe956067c)
+06 56 e9 7c
+Sending double = 867525011.906491400000 (0x41c9dab0c9f407e9)
+e9  07  f4  c9  b0  da  c9  41  
+Sending double = -1435006152.118178600000 (0xc1d5621d3207903d)
+3d  90  07  32  1d  62  d5  c1  
+Sending double = -1683959169.293186000000 (0xc1d917cb6052c38f)
+8f  c3  52  60  cb  17  d9  c1  
+Sending double = -2091326318.897090000000 (0xc1df29c6dbb969ec)
+ec  69  b9  db  c6  29  df  c1  
+Sending double = -748768247.243667600000 (0xc1c650a5fb9f3080)
+80  30  9f  fb  a5  50  c6  c1  
+Sending double = 815850912.207121600000 (0x41c85072d01a82f6)
+f6  82  1a  d0  72  50  c8  41  
+
+10000000
