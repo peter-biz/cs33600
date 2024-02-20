@@ -43,58 +43,48 @@ import java.nio.ByteBuffer;
  */
 class Client
 {
-   public static void main(String[] args)
+   public static void main(String[] args) throws IOException
    {
       final BufferedInputStream in = new BufferedInputStream(System.in);
       int byteCounter = 0;
 
-      try {
-         while (true) {
-            int b = in.read();
-            if (b == -1) {
-               System.out.printf("\nError: End of file condition detected after reading %d bytes from standard input.\n", byteCounter);
-               break;
-            }
-            byteCounter++;
-            if ((b & 0x80) == 0x80) {
-               System.out.printf("\nRead %d bytes from standard input.\n", byteCounter);
-               break;
-            }
-            if ((b & 0x80) == 0) {
-               if ((b & 0x40) == 0) {
-                  byte[] intBytes = new byte[4];
-                  for (int i = 0; i < 4; i++) {
-                     intBytes[i] = (byte) in.read();
-                     byteCounter++;
-                  }
-                  ByteBuffer bb = ByteBuffer.wrap(intBytes);
-                  System.out.printf("%d\n", bb.getInt());
-               }
-               else {
-                  byte[] doubleBytes = new byte[8];
-                  for (int i = 0; i < 8; i++) {
-                     doubleBytes[i] = (byte) in.read();
-                     byteCounter++;
-                  }
-                  ByteBuffer bb = ByteBuffer.wrap(doubleBytes);
-                  System.out.printf("%f\n", bb.getDouble());
-               }
-            }
-            else {
-               byte[] textBytes = new byte[b & 0x7F];
-               for (int i = 0; i < (b & 0x7F); i++) {
-                  textBytes[i] = (byte) in.read();
-                  byteCounter++;
-               }
-               System.out.printf("%s\n", new String(textBytes));
-            }
+      while(true) {
+         byte header = (byte) System.in.read();
+         if(header == -1) {
+            System.out.println("Unexpected end of file.");
+            break;
          }
-      }
-      catch (IOException e) {
-         System.err.println("Error: IOException");
-      }
+         
+         byteCounter++;
+
+         if(header == (byte) 0x80) {
+         //Text message
+         int numChars =  header & 0x7F; //this gets the last 7 bits after msb
+         byte[] txtBytes = new byte[numChars];
+         for(int i = 0; i < numChars; i++) {
+            
+         }
+
+         }
 
 
+
+      }
+      
+
+      
+
+     
       System.out.printf("\nRead %d bytes from standard input.\n", byteCounter);
+   }
+
+   private static byte[] readWeirdEndianInt() throws IOException {
+      byte[] bytes = new byte[4];
+      bytes[2] = (byte) System.in.read();
+      bytes[1] = (byte) System.in.read();
+      bytes[0] = (byte) System.in.read();
+      bytes[3] = (byte) System.in.read();
+
+      return bytes;
    }
 }
