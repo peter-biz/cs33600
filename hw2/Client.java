@@ -50,14 +50,14 @@ class Client
 
       while(true) {
          
-         byte header = (byte) in.read();  //FIXME: READING hex values, not bytes
-
-         System.out.println("***HEADER***: " + header);  //...these aren't bytes...., think it's hex converted to dec, 
+         byte header = (byte) in.read();  
+         System.out.println("***HEADER***: " + header);   
          
          if(header == (byte) 0x80)  { //Expected end of file
             byteCounter++;
             break;
          }
+
          if(header == -1) { //Unexpected end of file
             System.out.printf("Unexpected EOF at byte %d.\n", byteCounter);
             break;
@@ -65,42 +65,20 @@ class Client
          
          byteCounter++;
 
-         if(header == 1) { //HEADER VALUE NOT RIGHT FIXME:
+         if(((header & 0xff) >> 7) == 1) { 
             //Text message, hexadecimal 0x20 through 0x7E
             int numChars =  header & 0x7F; //this gets the last 7 bits
             byte[] txtBytes = new byte[numChars];
             for(int i = 7; i > 0; i--) {
-               byte nextByte = (byte) in.read();
-               byteCounter++;
-               if(nextByte < 0x20 || nextByte > 0x7E) {
-                  System.out.println("Error: Expected a text message, received: " + nextByte);
-               }
-               else {
-                  txtBytes[i] = nextByte;
-               }
+              System.out.printf("text @byte: %d\n", byteCounter); 
             }
          }
-         else if(header == 0) { //HEADER VALUE NOT RIGHT FIXME:
+         else if(((header & 0xff) >> 7) == 0) { 
             //Numeric message
             int numChars = header & 0x7F; //last 7 bits
             byte[] numBytes = new byte[numChars];
             //check if next byte is a double or int, then send to appropriate method
-            byte nextByte = (byte) in.read();
-            byteCounter++;
-            if(nextByte == 0) {
-               //int
-               numBytes = readWeirdEndianInt();
-               readInt(numBytes);
-            }
-            else if(nextByte == 1) {
-               //double
-               numBytes = readWeirdEndianInt();
-               readDoubleBuffer(numBytes);
-            }
-            else {
-               System.out.println("Error: Expected a 0 or 1, received: " + nextByte);
-            }
-            
+           System.out.printf("numeric, who knows the type, not me @byte: %d\n", byteCounter);          
 
          }
          
