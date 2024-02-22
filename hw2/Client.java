@@ -28,7 +28,7 @@ import java.nio.ByteBuffer;
  *    putInt(): allows us to put an int into the buffer
  *    putDouble(): allows us to put a double into the buffer
  *    
- *    byte[] b = ByteBuffer.allocate(Integer.BYTES).putInt(12345).array();
+ *    byte[] b = ByteBuffer.allocate(Integer.BYTES).putInt(12345).array();  ---> ByteBuffer instead of just byte[], no more DOT ARRAY !!!
  * 
  *    General requirements:
  *       The client should keep track of how many bytes it is receiving from the server. 
@@ -51,6 +51,7 @@ class Client
       while(true) {
          
          byte header = (byte) in.read();  
+         byte[] bytes = new byte[header & 0x7F]; //last 7 bits
          System.out.println("***HEADER***: " + header);   
          
          if(header == (byte) 0x80)  { //Expected end of file
@@ -62,34 +63,29 @@ class Client
             System.out.printf("Unexpected EOF at byte %d.\n", byteCounter);
             break;
          }
-         
          byteCounter++;
 
-         if(((header & 0xff) >> 7) == 1) { 
-            //Text message, hexadecimal 0x20 through 0x7E
-            int numChars =  header & 0x7F; //this gets the last 7 bits
-            byte[] txtBytes = new byte[numChars];
-            for(int i = 7; i > 0; i--) {
-              System.out.printf("text @byte: %d\n", byteCounter); 
+         //header reads current bit. The full 8 bits are read from the input stream and then the messages are sent after 
+         if((header & 0x80) == 0x80) { //Text message
+            //#TODO:
+            System.out.printf("Text message: %s\n", new String(bytes));
+         } else { //Numeric message
+            for(int i = 0; i < bytes.length; i++) {
+               //do nothing for now #TODO: 
             }
-         }
-         else if(((header & 0xff) >> 7) == 0) { 
-            //Numeric message
-            int numChars = header & 0x7F; //last 7 bits
-            byte[] numBytes = new byte[numChars];
-            //check if next byte is a double or int, then send to appropriate method
-           System.out.printf("numeric, who knows the type, not me @byte: %d\n", byteCounter);          
 
-         }
-         
          //java -jar client_demo.jar < testdata
-
-
       }
      
       System.out.printf("\nRead %d bytes from standard input.\n", byteCounter);
    }
 
+   /**
+    * This reads the input stream in "weird endian" style and stores the bytes in a byte array and returns it.
+    * @param b
+    * @throws IOException
+    * @return byte[]
+    */
    private static byte[] readWeirdEndianInt() throws IOException {
       byte[] bytes = new byte[4];
       bytes[2] = (byte) System.in.read();
@@ -100,13 +96,27 @@ class Client
       return bytes;
    }
 
-   private static void readDoubleBuffer(byte[] b) throws IOException { //little endian
-      double d = 1.0;
+   /**
+    * This reads the input stream in "little endian" style and stores the bytes in a byte array --- @TODO:
+    * @param b
+    * @throws IOException
+    */
+   private static void readDoubleBuffer(byte[] b) throws IOException { //little endian, 8 bits
+      double d = 1.1;
+
+      
       System.out.printf("Numeric message: %f\n", d);
    }
 
-   private static void readInt(byte[] b) { //weird endian
-      int i = 0;
+   /**
+    * This reads the input stream in "weird endian" style and stores the bytes in a byte array --- @TODO:
+    * @param b
+    * @throws IOException
+    */
+   private static void readIntBuffer(byte[] b) { //weird endian, should read 4 bits, the given is not 4 bits
+      int i = 7;
+
+
       System.out.printf("Numeric message: %d\n", i);
    }
 }
