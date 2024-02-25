@@ -66,17 +66,17 @@ class Client
          byteCounter++;
 
          //header reads current bit. The full 8 bits are read from the input stream and then the messages are sent after 
-         if((header & 0x80) == 0x80) { //Text message
-            //#TODO:
+         if((header & 0x80) == 0x80) { //text message -- when the msb is 1  
+            in.read(bytes);
             System.out.printf("Text message: %s\n", new String(bytes));
-         } else { //Numeric message
-            for(int i = 0; i < bytes.length; i++) {
-               //do nothing for now #TODO: 
-            }
+         } else { //numeric message - sent as a hex representation of the {type} bytes
+            //TODO: implement log :p
+         }
 
          //java -jar client_demo.jar < testdata
+      
+        
       }
-     
       System.out.printf("\nRead %d bytes from standard input.\n", byteCounter);
    }
 
@@ -86,7 +86,7 @@ class Client
     * @throws IOException
     * @return byte[]
     */
-   private static byte[] readWeirdEndianInt() throws IOException {
+   private static byte[] readWeirdEndianInt() throws IOException { 
       byte[] bytes = new byte[4];
       bytes[2] = (byte) System.in.read();
       bytes[1] = (byte) System.in.read();
@@ -102,10 +102,13 @@ class Client
     * @throws IOException
     */
    private static void readDoubleBuffer(byte[] b) throws IOException { //little endian, 8 bits
-      double d = 1.1;
+      ByteBuffer buffer = ByteBuffer.wrap(b);
+      double d = buffer.getDouble();
+
+
 
       
-      System.out.printf("Numeric message: %f\n", d);
+      System.out.printf("Numeric message (int): %f\n", d);
    }
 
    /**
@@ -114,9 +117,9 @@ class Client
     * @throws IOException
     */
    private static void readIntBuffer(byte[] b) { //weird endian, should read 4 bits, the given is not 4 bits
-      int i = 7;
+      ByteBuffer buffer = ByteBuffer.wrap(b);
+      int i = buffer.getInt();
 
-
-      System.out.printf("Numeric message: %d\n", i);
+      System.out.printf("Numeric message (double): %d\n", i);
    }
 }

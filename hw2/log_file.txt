@@ -1,17 +1,4 @@
-00010100
-Sending int = -1025846995 (0xc2dad12d)
-d1 da c2 2d
-Sending int = 1131000287 (0x4369b1df)
-b1 69 43 df
-Sending double = -1525981014.930909000000 (0xc1d6bd27d5bb9403)
-03  94  bb  d5  27  bd  d6  c1  
-Sending int = 1152881946 (0x44b7951a)
-95 b7 44 1a
-Sending double = -1798630560.983332200000 (0xc1dacd3b283eeeea)
-ea  ee  3e  28  3b  cd  da  c1  
-Sending int = -809865731 (0xcfba6dfd)
-6d ba cf fd
-Sending int = -887808941 (0xcb151c53)
-1c 15 cb 53
+11010110 (86 characters)
+h&Z^]Ttj"lG&pSC]c6c:gKcH{TpU(4Q2lcgry]p'm37(o7D87A4.(nASe-5P.h+|@D~WPVK&Z~Ig)!05HS"Ml-
 
 10000000
