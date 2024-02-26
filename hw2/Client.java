@@ -70,7 +70,8 @@ class Client
             in.read(bytes);
             System.out.printf("Text message: %s\n", new String(bytes));
          } else { //numeric message - sent as a hex representation of the {type} bytes
-            //TODO: implement log :p
+            //TODO: implement logic :p
+            //idk how :)
          }
 
          //java -jar client_demo.jar < testdata
@@ -101,14 +102,11 @@ class Client
     * @param b
     * @throws IOException
     */
-   private static void readDoubleBuffer(byte[] b) throws IOException { //little endian, 8 bits
+   private static void readDoubleBuffer(byte[] b) { //little endian
       ByteBuffer buffer = ByteBuffer.wrap(b);
       double d = buffer.getDouble();
 
-
-
-      
-      System.out.printf("Numeric message (int): %f\n", d);
+      System.out.printf("Numeric message (double): %f\n", d);
    }
 
    /**
@@ -116,10 +114,10 @@ class Client
     * @param b
     * @throws IOException
     */
-   private static void readIntBuffer(byte[] b) { //weird endian, should read 4 bits, the given is not 4 bits
+   private static void readIntBuffer(byte[] b) { //weird endian
       ByteBuffer buffer = ByteBuffer.wrap(b);
       int i = buffer.getInt();
 
-      System.out.printf("Numeric message (double): %d\n", i);
+      System.out.printf("Numeric message (int): %d\n", i);
    }
 }
