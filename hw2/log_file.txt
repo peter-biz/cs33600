@@ -1,4 +1,20 @@
-11010110 (86 characters)
-h&Z^]Ttj"lG&pSC]c6c:gKcH{TpU(4Q2lcgry]p'm37(o7D87A4.(nASe-5P.h+|@D~WPVK&Z~Ig)!05HS"Ml-
+10010100 (20 characters)
+c&a\iFG!#3o8}kBoa62]
+
+00000111
+Sending double = 408137285.970922950000 (0x41b853ae45f88e68)
+68  8e  f8  45  ae  53  b8  41  
+Sending double = -287302707.256242600000 (0xc1b11fe43341991d)
+1d  99  41  33  e4  1f  b1  c1  
+Sending double = -1092951649.790344500000 (0xc1d0494798729501)
+01  95  72  98  47  49  d0  c1  
+Sending int = -820248042 (0xcf1c0216)
+02 1c cf 16
+Sending int = -326182627 (0xec8ed91d)
+d9 8e ec 1d
+Sending int = 1376445297 (0x520ae371)
+e3 0a 52 71
+Sending int = 1741466013 (0x67cca99d)
+a9 cc 67 9d
 
 10000000
