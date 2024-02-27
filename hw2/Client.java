@@ -23,10 +23,8 @@ class Client
          byte header;
          try {
             header = (byte) in.read();
-            //System.out.println("***HEADER***: " + header);    //TODO: remove this
-
+            byteCounter++;
             if(header == (byte) 0x80)  { //Expected end of file
-               // byteCounter++; //TODO: might need this
                break;
             }
    
@@ -34,114 +32,103 @@ class Client
                System.out.printf("Unexpected EOF at byte %d.\n", byteCounter);
                break;
             }
-   
-            //header reads current bit. The full 8 bits are read from the input stream and then the messages are sent after 
-            if((header & 0x80) == 0x80) { //Text message
-               byte[] bytes = new byte[header & 0x7f];
-               printCharacters(in, bytes);
-               byteCounter += bytes.length;           
-            } else if(((header & 0xff) >> 7) == 0) { //Numeric message
-               byte intOrDouble = (byte) (header & 1);
-               if(intOrDouble == 0) { //int
-                  printInt(in);
-               } else { //double
-                  printDouble(in);
-               }
-               header = (byte) (header >> 1);
-            }        
-         } 
-         catch(IOException e) {
-            System.out.println("Unexpected EOF in header.");
-            break;
-      }
-         
-   }
-   System.out.printf("\nRead %d bytes from standard input.\n", byteCounter); 
+         } catch(IOException e) {
+               System.out.println("Unexpected EOF in header.");
+               break;
+         }
 
-         
- 
+         int isTextOrNumber = (header & 0xff) >> 7; //msb
+         if(isTextOrNumber == 0) { //number
+            checkType(in, header);
+         } else { //text
+            printCharacters(in, header);
+         }
+      }
+   System.out.printf("\nRead %d bytes from standard input.\n", byteCounter); //Prints the number of bytes read from standard input.
 }
 
+   /**
+    * This checks the type of the message and calls the appropriate method to print the message.
+    * @param in
+    * @param header
+    * @throws IOException
+    */
+   private static void checkType(BufferedInputStream in, byte header) throws IOException {
+         for (int i = 8; i > 1; i--) {
+            byte b = (byte) (header & 1);
+            if((int) b == 1) {
+               printDouble(in);
+            } else {
+               printInt(in);
+            }
+            header = (byte) (header >> 1);
+         }
+      }
+
 
    /**
-    * This reads the input stream in "ASCII" style and stores the bytes in a byte array and returns it.
-    * @param b
+    * This reads the input stream in "ASCII" style and stores the bytes in a byte array and then prints the characters.
+    * @param in
+    * @param header
     * @throws IOException
-    * @return byte[]
     */
-   private static void printCharacters(BufferedInputStream in, byte[] b) { //ASCII
-      try{
-         for(int i = 0; i < b.length; i++) {
-            b[i] = (byte) in.read();
-            
-         }
-      } catch(IOException e) {
-         System.out.println("Unexpected EOF in text message.");
+   private static void printCharacters(BufferedInputStream in, byte header) throws IOException{ //ASCII
+      int length = (header & 0x7f); //last 7 bits
+      for(int i = 0; i < length; i++) {
+         byte b = (byte) in.read();
+         byteCounter++;
+         System.out.print((char) b);
       }
-      System.out.println(new String(b));
+      System.out.println();
+
    }
 
 
    /**
-    * This reads the input stream in "little endian" style and stores the bytes in a byte array --- @TODO:
-    * @param b
+    * This reads the input stream in "little endian" style and prints the double at 12 decimal places.
+    * @param in
     * @throws IOException
     */
-   private static void printDouble(BufferedInputStream in) { //little endian
+   private static void printDouble(BufferedInputStream in) throws IOException { //little endian
       ByteBuffer doubleByteBuffer = ByteBuffer.allocate(Double.BYTES);
-     
-      try{
-         for(int i = 7; i >= 0; i--) {
+
+      if (in.available() >= Double.BYTES) {
+         for (int i = 7; i >= 0; i--) {
             byte doubleByte = (byte) in.read();
             doubleByteBuffer.put(i, doubleByte);
             byteCounter++;
          }
 
-         System.out.printf("double%.12f\n", doubleByteBuffer.getDouble());
-
-      }
-      catch(IOException e) {
-         System.out.println("Unexpected EOF in double message.");
+      } else {
+         System.out.println("Insufficient data for double message.");
       }
 
-      
+      System.out.printf("%.12f\n", doubleByteBuffer.getDouble());      
    }
 
    /**
-    * This reads the input stream in "weird endian" style and stores the bytes in a byte array --- @TODO:
-    * @param b
+    * This reads the input stream in "weird endian" style and then prints the integer.
+    * @param in
     * @throws IOException
     */
-   private static void printInt(BufferedInputStream in) { //weird endian (3rd, 2nd, 1st, 4th)
+   private static void printInt(BufferedInputStream in) throws IOException{ //weird endian (3rd, 2nd, 1st, 4th)
       ByteBuffer intByteBuffer = ByteBuffer.allocate(Integer.BYTES);
-      try {
-         //read in weird endian
+      byte intByte;
 
-         byte intByte;
+      intByte = (byte) in.read(); //3rd
+      intByteBuffer.put(2, intByte);
 
-         //read 3rd
-         intByte = (byte) in.read();
-         intByteBuffer.put(2, intByte);
+      intByte = (byte) in.read(); //2nd
+      intByteBuffer.put(1, intByte);
 
-         //read 2nd
-         intByte = (byte) in.read();
-         intByteBuffer.put(1, intByte);
+      intByte = (byte) in.read(); //1st
+      intByteBuffer.put(0, intByte);
 
-         //read 1st
-         intByte = (byte) in.read();
-         intByteBuffer.put(0, intByte);
+      intByte = (byte) in.read(); //4th
+      intByteBuffer.put(3, intByte);
 
-         //read 4th
-         intByte = (byte) in.read();
-         intByteBuffer.put(3, intByte);
-         
-         byteCounter += 4;
-         System.out.println("INT"+intByteBuffer.getInt());
+      byteCounter += 4;
 
-      }
-      catch(IOException e) {
-         System.out.println("Unexpected EOF in int message.");
-      }
-
+      System.out.println(intByteBuffer.getInt());
    }
 }
