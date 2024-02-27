@@ -11,10 +11,18 @@ import java.io.IOException;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
+/**
+* This class reads the message sent from the server and prints the translated message.
+*/
 class Client
 {
    private static int byteCounter = 0;
 
+   /**
+    * This is the main method that reads the message from the server and prints the translated message.
+    * @param args
+    * @throws IOException
+    */
    public static void main(String[] args) throws IOException
    {
       final BufferedInputStream in = new BufferedInputStream(System.in);
