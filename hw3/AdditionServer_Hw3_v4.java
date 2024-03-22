@@ -115,7 +115,7 @@ public class AdditionServer_Hw3_v4
                   break;
                } else {
                   int sum = 0;
-                  StringTokenizer tokenizer = new StringTokenizer(line);
+                  StringTokenizer tokenizer = new StringTokenizer(line); //tokenize the string to get the integers
                   while (tokenizer.hasMoreTokens()) {
                         String token = tokenizer.nextToken();
                         int value = Integer.parseInt(token);
@@ -127,7 +127,7 @@ public class AdditionServer_Hw3_v4
 
                   // Send the sum of the sequence to the client
                   out.println("-1");
-                  out.flush();
+                  out.flush(); //SERVER: Client 1: Message received: sum = 10
                   System.out.println("SERVER: Client " + clientCounter + ": Message received: sum = " + sum);
                   out.println(sum);
                   out.flush();

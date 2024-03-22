@@ -111,11 +111,14 @@ public class AdditionServer_Hw3_v2
                int sum = 0;
                int x;
                
-               while((request != null && (x = Integer.parseInt(request.trim())) >= 0)) {
+               while(request != null) {
+                  x = Integer.parseInt(request.trim());
+                  if(x < 0) {
+                      break;
+                  }
                   sum += x;
                   request = in.readLine();
-               }
-                        //TODO: first repsone is wrong, sum = 10, not 20
+              }
 
                System.out.println("SERVER: Client " + clientCounter + ": Message received: sum = " + sum);
                out.println(sum);

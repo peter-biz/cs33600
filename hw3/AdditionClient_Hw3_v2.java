@@ -77,16 +77,26 @@ public class AdditionClient_Hw3_v2
       }
 
       // Implement the appropriate client/server protocol.
+      // client/server v2 should use a sequence counter and integer sentinels
       final Scanner scanner = new Scanner(System.in);
-      while(scanner.hasNextInt()) { 
-         int numSequences;
-         while(scanner.hasNextInt() && (numSequences = scanner.nextInt()) >= 0) {
-            out.println(numSequences);
+      int numSequences = scanner.nextInt(); // Read the number of sequences
+      scanner.nextLine(); // Discard the rest of the line
+
+      while (numSequences > 0) {
+         //System.out.println("CLIENT: Number of sequences: " + numSequences);
+         int num;
+         while (scanner.hasNextInt() &&  (num = scanner.nextInt()) >= 0) {
+            
+           // System.out.println("num = " + num);
+            out.println(num);
+
+            if (num < 0) {
+               break;
+            }
          }
          out.println(-1);
          out.flush();
 
-         //TODO: first repsone is wrong, sum = 10, not 20
          try {
             int sum = Integer.parseInt(in.readLine());
             System.out.println("CLIENT: Server response is: sum = " + sum);
@@ -96,8 +106,8 @@ public class AdditionClient_Hw3_v2
             System.exit(-1);
          }
 
+         numSequences--;
       }
-
       // Close the connection to the server
       try
       {
