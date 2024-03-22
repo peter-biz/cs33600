@@ -104,6 +104,44 @@ public class AdditionServer_Hw3_v3
          System.out.println("SERVER: Client " + clientCounter + ": IP: " +  clientIP.getHostAddress());
 
          // Implement the appropriate client/server protocol.
+         //using a sequence sentinel and integer counters
+         try {
+            String line;
+            while ((line = in.readLine()) != null) {
+                int length = Integer.parseInt(line);
+
+                if (length < 0) {
+                    // Close the connection to the client for a negative number.
+                    break;
+                } else {
+                    int sum = 0;
+                    for (int i = 0; i < length; i++) {
+                        int value = Integer.parseInt(in.readLine());
+                        sum += value;
+                    }
+                    System.out.println("SERVER: Message recieved: sum = "+sum);
+                    out.println(sum);
+                    out.flush();
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("SERVER: Error reading from or writing to the client.");
+            e.printStackTrace();
+        }
+
+
+         // Close the connection to the client.
+         try
+         {
+            socket.close();
+            System.out.println("SERVER: Client "+clientCounter+" Closed socket");
+         }
+         catch (IOException e)
+         {
+            System.out.println("SERVER: Error closing the connection to the client.");
+            //System.out.println( e );
+            e.printStackTrace();
+         }
 
 
 

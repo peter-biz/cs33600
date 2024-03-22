@@ -105,39 +105,52 @@ public class AdditionServer_Hw3_v1
          System.out.println("SERVER: Client " + clientCounter + ": IP: " +  clientIP.getHostAddress());
 
          // Implement the appropriate client/server protocol.
+        //output should look like data_v1_server_results.txt
+         int numSequences = 0;
+         int sequenceLength = 0;
+         int sum = 0;
+         int[] sequence = null;
          try
          {
-            // Read the number of sequences to expect.
-            String line = in.readLine();
-            int numSequences = Integer.parseInt(line);
-            System.out.println("SERVER: Client " + clientCounter + ": " + numSequences + " sequences expected.");
+            numSequences = Integer.parseInt(in.readLine());
+            
 
-            // Read the sequences and send back the sums.
-            for (int i = 0; i < numSequences; ++i)
+
+            for (int i = 0; i < numSequences; i++)
             {
-               line = in.readLine();
-               int numValues = Integer.parseInt(line);
-               System.out.println("SERVER: Client " + clientCounter + ": " + numValues + " values expected.");
-
-               int sum = 0;
-               for (int j = 0; j < numValues; ++j)
+               sequenceLength = Integer.parseInt(in.readLine());
+               sequence = new int[sequenceLength];
+               sum = 0;
+               for (int j = 0; j < sequenceLength; j++)
                {
-                  line = in.readLine();
-                  int value = Integer.parseInt(line);
-                  sum += value;
+                  sequence[j] = Integer.parseInt(in.readLine());
+                  out.flush();
+                  sum += sequence[j];
                }
-
                out.println(sum);
                out.flush();
+               System.out.println("SERVER: Client " + clientCounter + ": Message recieved: sum = " + sum);
             }
          }
-         catch(IOException e)
+         catch (IOException e)
          {
-            System.out.println("SERVER: Error reading from or writing to client");
-            System.out.println( e );
+            System.out.println("SERVER: Error in communication with client.");
+            //System.out.println( e );
+            e.printStackTrace();
          }
 
-
+         // Close the connection to the client.
+         try
+         {
+            socket.close();
+            System.out.println("SERVER: Client " + clientCounter + " Closed socket.");
+         }
+         catch (IOException e)
+         {
+            System.out.println("SERVER: Error closing connection to client.");
+            //System.out.println( e );
+            e.printStackTrace();
+         }
       }
    }
 }

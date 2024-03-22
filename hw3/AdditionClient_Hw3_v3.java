@@ -78,9 +78,69 @@ public class AdditionClient_Hw3_v3
       }
 
       // Implement the appropriate client/server protocol.
+      //using a sequence sentinel and integer counters
+      Scanner scanner = new Scanner(System.in);
+      boolean continueLoop = true;
+      try {
+         while (continueLoop) {
+            int length = scanner.nextInt();
 
+            if (length < 0) {
+               // Send a negative number to the server to indicate termination
+               out.println(length);
+               out.flush();
+               continueLoop = false;
+            } else {
+               // Send the length of the sequence to the server
+               out.println(length);
+               out.flush();
 
+               // Send the sequence of integers to the server
+               int[] sequence = new int[length];
+               for (int i = 0; i < length; i++) {
+                     sequence[i] = scanner.nextInt();
+                     out.println(sequence[i]);
+                     out.flush();
+               }
 
+               // Receive the sum of the sequence from the server
+               String sumString = in.readLine();
+               int sum = Integer.parseInt(sumString);
+               System.out.println("CLIENT: Server response is: sum = " + sum);
+            }
+         }
+      }
+      catch (IOException e)
+      {
+         System.out.println("CLIENT: Error reading from server.");
+         e.printStackTrace();
+         System.exit(-1);
+      }
+         
+
+      
+      // Close the connection to the server.            
+
+      try
+      {
+         socket.close();
+      }
+      catch (IOException e)
+      {
+         System.out.println("CLIENT: Error closing connection.");
+         //System.out.println( e );
+         e.printStackTrace();
+         System.exit(-1);
+      }
 
    }
+   
+      
+
+      
+
+
+
+
 }
+

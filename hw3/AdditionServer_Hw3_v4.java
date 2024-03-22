@@ -8,6 +8,7 @@
 */
 
 import java.net.*;
+import java.util.StringTokenizer;
 import java.io.*;
 
 /**
@@ -105,7 +106,50 @@ public class AdditionServer_Hw3_v4
          System.out.println("SERVER: Client " + clientCounter + ": IP: " +  clientIP.getHostAddress());
 
          // Implement the appropriate client/server protocol.
+         //client/server v4 should use a sequence sentinel and integer sentinels
+         try {
+            String line;
+            while ((line = in.readLine()) != null) {
+               if (line.equals("-1")) {
+                  // Close the connection to the client for a negative integer
+                  break;
+               } else {
+                  int sum = 0;
+                  StringTokenizer tokenizer = new StringTokenizer(line);
+                  while (tokenizer.hasMoreTokens()) {
+                        String token = tokenizer.nextToken();
+                        int value = Integer.parseInt(token);
+                        if (value < 0) {
+                           break;
+                        }
+                        sum += value;
+                  }
 
+                  // Send the sum of the sequence to the client
+                  out.println("-1");
+                  out.flush();
+                  System.out.println("SERVER: Client " + clientCounter + ": Message received: sum = " + sum);
+                  out.println(sum);
+                  out.flush();
+               }
+            }
+         } catch (IOException e) {
+               System.out.println("SERVER: Error reading from or writing to the client.");
+               e.printStackTrace();
+         }
+
+         //Close the connection to the client.
+         try
+         {
+            socket.close();
+            System.out.println("SERVER: Client " + clientCounter + ": Closed socket.");
+         }
+         catch (IOException e)
+         {
+            System.out.println("SERVER: Error closing connection.");
+            //System.out.println( e );
+            e.printStackTrace();
+         }
 
 
 

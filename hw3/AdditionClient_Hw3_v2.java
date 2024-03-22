@@ -77,9 +77,43 @@ public class AdditionClient_Hw3_v2
       }
 
       // Implement the appropriate client/server protocol.
+      final Scanner scanner = new Scanner(System.in);
+      while(scanner.hasNextInt()) { 
+         int numSequences;
+         while(scanner.hasNextInt() && (numSequences = scanner.nextInt()) >= 0) {
+            out.println(numSequences);
+         }
+         out.println(-1);
+         out.flush();
 
+         //TODO: first repsone is wrong, sum = 10, not 20
+         try {
+            int sum = Integer.parseInt(in.readLine());
+            System.out.println("CLIENT: Server response is: sum = " + sum);
+         } catch (IOException e) {
+            System.out.println("CLIENT: Error reading from server.");
+            e.printStackTrace();
+            System.exit(-1);
+         }
 
+      }
 
+      // Close the connection to the server
+      try
+      {
+         socket.close();
+      }
+      catch (IOException e)
+      {
+         System.out.println("CLIENT: Error closing the connection to the server.");
+         //System.out.println( e );
+         e.printStackTrace();
+         System.exit(-1);
+      }
+
+      
 
    }
+
+
 }
