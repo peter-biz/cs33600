@@ -105,7 +105,6 @@ public class AdditionServer_Hw3_v1
          System.out.println("SERVER: Client " + clientCounter + ": IP: " +  clientIP.getHostAddress());
 
          // Implement the appropriate client/server protocol.
-        //output should look like data_v1_server_results.txt
          int numSequences = 0;
          int sequenceLength = 0;
          int sum = 0;

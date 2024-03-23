@@ -78,42 +78,34 @@ public class AdditionClient_Hw3_v4
 
       // Implement the appropriate client/server protocol.
       //client/server v4 should use a sequence sentinel and integer sentinels
-      BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+      final Scanner scanner = new Scanner(System.in);
 
-      try {
-         String line; // The sequence of integers
+      while(scanner.hasNextInt())
+      {
 
-         while ((line = reader.readLine()) != null){ 
-            if (line.equals("-1")) { // If the client -1, terminate the client
-                  // Send a negative integer to the server to indicate termination
-                  out.println("-1");
-                  out.flush();
-                  break;
-            } else { // Otherwise, send the sequence of integers to the server
-                  // Send the sequence of integers to the server
-                  out.println(line); 
-                  out.flush(); 
-
-                  // Wait for the server to send a negative integer to end the sequence
-                  String endSequence = in.readLine(); // Read the server's response
-                  if (endSequence.equals("-1")) { // If the server sends -1, the sequence is over
-                     // Receive the sum of the sequence from the server
-                     String sumString = in.readLine(); 
-                     int sum = Integer.parseInt(sumString); 
-                     System.out.println("CLIENT: Server respose is: sum = " + sum);
-                  } else {
-                     System.out.println("Error: Server did not end the sequence correctly.");
-                     break;
-                  }
+         
+         while (true){ 
+            final int sentinel = scanner.nextInt();
+            if(sentinel >= 0) {
+               out.println(sentinel);
+            } else {
+               out.println(sentinel);
+               out.flush();
+               break;
             }
          }
-      } catch (IOException e) { 
-         System.out.println("CLIENT: Error reading input or communicating with server.");
-         e.printStackTrace();
-         System.exit(-1);
+            
+         try {
+            final String sumString = in.readLine();
+            final int sum = Integer.parseInt(sumString.trim());
+            System.out.println("CLIENT: Server response is: sum = " + sum);
+         } catch (IOException e) { 
+            System.out.println("CLIENT: Error reading input or communicating with server.");
+            e.printStackTrace();
+            System.exit(-1);
+         }
       }
-
-
+   
       //Close the connection to the server.
       try
       {
