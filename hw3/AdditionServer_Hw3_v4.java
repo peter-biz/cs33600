@@ -122,6 +122,7 @@ public class AdditionServer_Hw3_v4
                   line = in.readLine();
 
                }
+               
                System.out.println("SERVER: Client " + clientCounter + ": Message recieved: sum = " + sum);
                out.println(sum);
                out.flush();

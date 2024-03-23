@@ -88,6 +88,7 @@ public class AdditionClient_Hw3_v4
             final int sentinel = scanner.nextInt();
             if(sentinel >= 0) {
                out.println(sentinel);
+
             } else {
                out.println(sentinel);
                out.flush();
@@ -103,8 +104,9 @@ public class AdditionClient_Hw3_v4
             System.out.println("CLIENT: Error reading input or communicating with server.");
             e.printStackTrace();
             System.exit(-1);
-         }
+         
       }
+   }
    
       //Close the connection to the server.
       try
