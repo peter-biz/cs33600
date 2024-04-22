@@ -45,22 +45,33 @@ public class Hw4 extends HttpMethodsAdaptor
       System.out.println("SERVER: Hw4 GET photo method:");
 
       // Get the URL's query string from the req object.
+      String qString = req.queryString;
 
       // Parse it.
-      int n =
+      int n = Integer.parseInt((qString.substring((qString.length()) -2)));
+      
 
 
       System.out.println("=====> Parsed query parameter to: " + n);
 
       // Read line n from the local file photo-urls.txt.
-
-
+      String photoURL = String.valueOf(n);
+      
 
       System.out.println("=====> Found URL: " + photoURL);
 
       // Build the HTML response page.
       // Run the demo program to see what the HTML should be.
       final String body =
+         "<html>\n" +
+            "<head>\n" +
+               "<title>Photo</title>\n" +
+            "</head>\n" +
+            "<body>\n" +
+               "<h1>Photo</h1>\n" +
+               "<img src=\"" + photoURL + "\" alt=\"photo\" width=\"500\" height=\"500\">\n" +
+            "</body>\n" +
+         "</html>";
 
 
 
