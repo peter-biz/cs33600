@@ -77,38 +77,51 @@ public class AdditionClient_Hw3_v1
       }
 
       // Implement the appropriate client/server protocol.  
-      Scanner keyboard = new Scanner(System.in);
+      Scanner scanner = new Scanner(System.in);
       int numSequences = 0;
       int sequenceLength = 0;
       int sum = 0;
       int[] sequence = null;
       try
       {
-         numSequences = keyboard.nextInt();
+         numSequences = scanner.nextInt();
          out.println(numSequences);
          out.flush();
 
          for (int i = 0; i < numSequences; i++)
          {
-            sequenceLength = keyboard.nextInt();
+            sequenceLength = scanner.nextInt();
             out.println(sequenceLength);
             out.flush();
 
             sequence = new int[sequenceLength];
             for (int j = 0; j < sequenceLength; j++)
             {
-               sequence[j] = keyboard.nextInt();
+               sequence[j] = scanner.nextInt();
                out.println(sequence[j]);
                out.flush();
             }
 
             sum = Integer.parseInt(in.readLine());
-            System.out.println("CLIENT: The sum of sequence " + (i+1) + " is " + sum);
+            System.out.println("CLIENT: Server response is: sum = " + sum);
          }
       }
       catch (IOException e)
       {
          System.out.println("CLIENT: Error in communication with server.");
+         //System.out.println( e );
+         e.printStackTrace();
+         System.exit(-1);
+      }
+
+      // Close the connection to the server
+      try
+      {
+         socket.close();
+      }
+      catch (IOException e)
+      {
+         System.out.println("CLIENT: Error closing connection to server.");
          //System.out.println( e );
          e.printStackTrace();
          System.exit(-1);

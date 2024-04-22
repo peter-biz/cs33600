@@ -105,8 +105,44 @@ public class AdditionServer_Hw3_v2
          System.out.println("SERVER: Client " + clientCounter + ": IP: " +  clientIP.getHostAddress());
 
          // Implement the appropriate client/server protocol.
+         String request;
+         try {
+            while((request = in.readLine()) != null) {
+               int sum = 0;
+               int x;
+               
+               while(request != null) {
+                  x = Integer.parseInt(request.trim());
+                  if(x < 0) {
+                      break;
+                  }
+                  sum += x;
+                  request = in.readLine();
+              }
 
+               System.out.println("SERVER: Client " + clientCounter + ": Message received: sum = " + sum);
+               out.println(sum);
+               out.flush();
 
+            }
+         } catch (IOException e) {
+            System.out.println("SERVER: Error reading from client.");
+            e.printStackTrace();
+         }
+
+         
+         // Close the connection to the client
+         try
+         {
+            socket.close();
+            System.out.println("SERVER: Connection to client closed.");
+         }
+         catch (IOException e)
+         {
+            System.out.println("SERVER: Error closing the connection to the client.");
+            //System.out.println( e );
+            e.printStackTrace();
+         }
 
 
       }

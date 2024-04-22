@@ -8,6 +8,7 @@
 */
 
 import java.net.*;
+import java.util.StringTokenizer;
 import java.io.*;
 
 /**
@@ -105,6 +106,45 @@ public class AdditionServer_Hw3_v4
          System.out.println("SERVER: Client " + clientCounter + ": IP: " +  clientIP.getHostAddress());
 
          // Implement the appropriate client/server protocol.
+         //client/server v4 should use a sequence sentinel and integer sentinels
+         String line;
+         try {
+            while ((line = in.readLine()) != null) {
+               int sum = 0;
+               while(true) {
+                  final int sentinel = Integer.parseInt(line.trim());
+                  if(sentinel >= 0) {
+                     sum += sentinel;
+                    
+                  } else {
+                     break;
+                  }
+                  line = in.readLine();
+
+               }
+               
+               System.out.println("SERVER: Client " + clientCounter + ": Message recieved: sum = " + sum);
+               out.println(sum);
+               out.flush();
+               
+            }
+               //Close the connection to the client.
+               try
+               {
+                  socket.close();
+                  System.out.println("SERVER: Client " + clientCounter + ": Closed socket.");
+               }
+               catch (IOException e)
+               {
+                  System.out.println("SERVER: Error closing connection.");
+                  //System.out.println( e );
+                  e.printStackTrace();
+               }
+            
+        } catch (IOException e) {
+            System.out.println("SERVER: Error reading from or writing to the client.");
+            e.printStackTrace();
+        }
 
 
 
