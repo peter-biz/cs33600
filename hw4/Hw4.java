@@ -50,16 +50,27 @@ public class Hw4 extends HttpMethodsAdaptor
       String qString = req.queryString;
 
       // Parse it.
-      int n = Integer.parseInt((qString.substring((qString.indexOf("=") + 1)))); //this does nto work cuz the query string is not always 2 digits
-      
-
-      if(n < 1 || n > 25000)
+      int n;
+      try {
+         n = Integer.parseInt((qString.substring((qString.indexOf("=") + 1))));  //FIXME: breaks if no input data :)
+         
+     
+         if(n < 1 || n > 25000 )
+         {
+            sendErrorResponse(req, res,
+               "400", "Bad Request",
+               "The requested URL, "+req.resourceName+", does not contain a valid query parameter. Must be between 1 and 25000.");
+            return;
+         }
+      }
+      catch (NumberFormatException e)
       {
          sendErrorResponse(req, res,
             "400", "Bad Request",
-            "The requested URL, "+req.resourceName+", does not contain a valid query parameter.");
+            "The requested URL, "+req.resourceName+", does not contain a valid query parameter. Must be an integer of 1-25000.");
          return;
       }
+
       
 
 
@@ -137,7 +148,7 @@ public class Hw4 extends HttpMethodsAdaptor
 
       // Set the req object's query string
       // using the req object's entity body.
-      req.queryString = new String(req.entityBody); //idk TODO: 
+      req.queryString = new String(req.entityBody); //TODO: is this all it needs? 
 
 
 
