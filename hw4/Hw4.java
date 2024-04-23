@@ -52,7 +52,7 @@ public class Hw4 extends HttpMethodsAdaptor
       // Parse it.
       int n;
       try {
-         n = Integer.parseInt((qString.substring((qString.indexOf("=") + 1))));  //FIXME: breaks if no input data :)
+         n = Integer.parseInt((qString.substring((qString.indexOf("=") + 1))));  
          
      
          if(n < 1 || n > 25000 )
@@ -99,15 +99,28 @@ public class Hw4 extends HttpMethodsAdaptor
       // Build the HTML response page.
       // Run the demo program to see what the HTML should be.
       final String body =
-         "<html>\n" +
-            "<head>\n" +
-               "<title>Photo</title>\n" +
-            "</head>\n" +
-            "<body>\n" +
-               "<h1>Photo</h1>\n" +
-               "<img src=\"" + photoURL + "\" alt=\"photo\" width=\"500\" height=\"500\">\n" +
-            "</body>\n" +
-         "</html>";
+
+            "<!doctype html>\r\n" +
+                  "<html>\r\n" +
+                     "<head>\r\n" +
+                        "<title>your photo</title>\r\n" +
+                        "<link rel=\"stylesheet\" href=\"index.css\">\r\n" +
+                     "</head>\r\n" +
+                     "<body>\r\n" +
+                        "<section id=\"Content\">\r\n" +
+                           "<article>\r\n" +
+                              "<h1>Photo number " + n + "</h1>\r\n" +
+                              "<p>\r\n" +
+                                 "<img src=" + photoURL + " alt=" + "photo number " + n + ">\r\n" +
+                              "</p>\r\n" +
+                           "</article>\r\n" +
+                           "<article>\r\n" +
+                              "<a href=\"index.html\">Back to the index page</a>\r\n" +
+                           "</article>\r\n" +
+                        "</section>\r\n" +
+                     "</body>\r\n" +
+                  "</html>\r\n";
+
 
 
 
@@ -148,10 +161,7 @@ public class Hw4 extends HttpMethodsAdaptor
 
       // Set the req object's query string
       // using the req object's entity body.
-      req.queryString = new String(req.entityBody); //TODO: is this all it needs? 
-
-
-
+      req.queryString = new String(req.entityBody); 
 
       // Call doGet().
       doGet(req, res);
