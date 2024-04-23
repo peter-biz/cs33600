@@ -1,6 +1,8 @@
 /*
-
-
+   Course: CS 33600
+   Name: Peter Bizoukas
+   Email: pbizouka@pnw.edu
+   Assignment: 4
 */
 
 import serverFramework.*;
@@ -48,14 +50,37 @@ public class Hw4 extends HttpMethodsAdaptor
       String qString = req.queryString;
 
       // Parse it.
-      int n = Integer.parseInt((qString.substring((qString.length()) -2)));
+      int n = Integer.parseInt((qString.substring((qString.indexOf("=") + 1)))); //this does nto work cuz the query string is not always 2 digits
+      
+
+      if(n < 1 || n > 25000)
+      {
+         sendErrorResponse(req, res,
+            "400", "Bad Request",
+            "The requested URL, "+req.resourceName+", does not contain a valid query parameter.");
+         return;
+      }
       
 
 
       System.out.println("=====> Parsed query parameter to: " + n);
 
       // Read line n from the local file photo-urls.txt.
-      String photoURL = String.valueOf(n);
+      String photoURL = "";
+      try
+      {
+         final Scanner inFile = new Scanner(new File("photo-urls.txt"));
+         for (int i = 1; i <= n; i++)
+         {
+            photoURL = inFile.nextLine();
+         }
+         inFile.close();
+      }
+      catch (FileNotFoundException e)
+      {
+         System.out.println("SERVER: Hw4 GET photo method: Unable to find file.");
+         System.out.println( e );
+      }
       
 
       System.out.println("=====> Found URL: " + photoURL);
@@ -112,6 +137,8 @@ public class Hw4 extends HttpMethodsAdaptor
 
       // Set the req object's query string
       // using the req object's entity body.
+      req.queryString = new String(req.entityBody); //idk TODO: 
+
 
 
 
